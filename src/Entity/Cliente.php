@@ -89,6 +89,32 @@ class Cliente
      * @ORM\Column(type="string", length=130)
      */
     private $email;
+
+    /**
+     * @var object
+     *
+     * @ORM\ManyToOne(targetEntity="App\Entity\Endereco", inversedBy="id")
+     *
+     */
+    private $endereco;
+
+    /**
+     * @return object
+     */
+    public function getEndereco()
+    {
+        return $this->endereco;
+    }
+
+    /**
+     * @param object $endereco
+     * @return Cliente
+     */
+    public function setEndereco($endereco)
+    {
+        $this->endereco = $endereco;
+        return $this;
+    }
     public function getId()
     {
         return $this->id;
