@@ -30,6 +30,39 @@ class Animal
     private $data_nascimento;
 
     /**
+     * @var object
+     *
+     * @ORM\ManyToMany(targetEntity="App\Entity\Cliente", mappedBy="animal")
+     *
+     */
+    private $cliente;
+
+    /**
+     * @var object
+     *
+     * @ORM\ManyToOne(targetEntity="App\Entity\Raca", inversedBy="id")
+     */
+    private $raca;
+
+    /**
+     * @return object
+     */
+    public function getCliente()
+    {
+        return $this->cliente;
+    }
+
+    /**
+     * @param object $cliente
+     * @return Animal
+     */
+    public function setCliente($cliente)
+    {
+        $this->cliente = $cliente;
+        return $this;
+    }
+
+    /**
      * @return string
      */
     public function getNome()
@@ -66,4 +99,23 @@ class Animal
     {
         return $this->id;
     }
+
+    /**
+     * @return object
+     */
+    public function getRaca()
+    {
+        return $this->raca;
+    }
+
+    /**
+     * @param object $raca
+     * @return Animal
+     */
+    public function setRaca($raca)
+    {
+        $this->raca = $raca;
+        return $this;
+    }
+    
 }
